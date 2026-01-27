@@ -137,6 +137,19 @@ span.highlight {
 .colored-box {
     color: black;
     padding: 20px;
-    display: inline-block;
+    display: table;
     border-radius: 10px;
+    min-height: 80px;
+    min-width: 120px;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.colored-box h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    display: table-cell;
+    vertical-align: middle;
 }
