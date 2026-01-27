@@ -1,0 +1,10 @@
+# LaTeX build files in data/cv/ (keep only .tex and .pdf)
+data/cv/*.aux
+data/cv/*.fdb_latexmk
+data/cv/*.fls
+data/cv/*.log
+data/cv/*.synctex.gz
+
+# Keep these files explicitly
+!data/cv/*.tex
+!data/cv/*.pdf
