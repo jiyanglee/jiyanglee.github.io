@@ -19,8 +19,8 @@
 \usepackage{fontawesome5} % for using icons
 \usepackage{amsmath} % for math
 \usepackage[
-    pdftitle={John Doe's CV},
-    pdfauthor={John Doe},
+    pdftitle={Jiyang Lee's CV},
+    pdfauthor={Jiyang Lee},
     pdfcreator={LaTeX with RenderCV},
     colorlinks=true,
     urlcolor=primaryColor
@@ -74,6 +74,7 @@
     0.2 cm
 } % section title spacing
 
+\newcommand{\AND}{\hspace{0pt}} % separator for header items (spacing comes from surrounding \kern)
 \renewcommand\labelitemi{$\circ$} % custom bullet points
 \newenvironment{highlights}{
     \begin{itemize}[
@@ -143,11 +144,6 @@
 
 % new command for external links:
 \renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
-
-\documentclass[10pt, letterpaper]{article}
-
-% Include all your provided template preamble here (geometry, packages, etc.)
-% (Omitted here for brevity)
 
 \begin{document}
 
