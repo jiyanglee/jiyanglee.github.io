@@ -8,3 +8,6 @@ data/cv/*.synctex.gz
 # Keep these files explicitly
 !data/cv/*.tex
 !data/cv/*.pdf
+
+# macOS
+.DS_Store
