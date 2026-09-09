@@ -79,7 +79,6 @@
       .dday-warn     { color: #ea580c; }  /* ≤30 days */
       .dday-soon     { color: #ca8a04; }  /* ≤60 days */
       .dday-ok       { color: #16a34a; }  /* >60 days */
-      .dday-past     { color: #9ca3af; }  /* closed */
       .date-cell {
         white-space: nowrap;
         font-size: 12px;
@@ -141,7 +140,7 @@
 
     <div class="dl-wrap">
       <h2>Conference Deadlines</h2>
-      <p class="subtitle">Submission deadlines for robotics, ML, CV, and control conferences. D-day is counted from today. Entries marked <em>estimated</em> are projected from the previous edition until the official CFP is out.</p>
+      <p class="subtitle">Open submission deadlines for robotics, ML, CV, and control conferences. Entries drop off the list once their deadline passes. D-day is counted from today. Entries marked <em>estimated</em> are projected from the previous edition until the official CFP is out.</p>
 
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">All</button>
@@ -316,49 +315,6 @@
         type: "Journal",
         notes: "Rolling submission",
       },
-      // Submission closed, but the events themselves are still ahead.
-      {
-        name: "IROS 2026",
-        full: "IEEE/RSJ Intl. Conf. on Intelligent Robots and Systems",
-        location: "Pittsburgh, PA, USA",
-        submission: "2026-03-02",
-        notification: "2026-06-16",
-        conference: "2026-09-27",
-        url: "https://2026.ieee-iros.org",
-        type: "Robotics",
-      },
-      {
-        name: "CoRL 2026",
-        full: "Conference on Robot Learning",
-        location: "Austin, TX, USA",
-        submission: "2026-05-29",
-        notification: "2026-09-04",
-        conference: "2026-11-09",
-        url: "https://www.corl.org",
-        type: "Robotics",
-        notes: "Nov 9–12, JW Marriott Austin",
-      },
-      {
-        name: "NeurIPS 2026",
-        full: "Neural Information Processing Systems",
-        location: "Sydney, Australia",
-        submission: "2026-05-06",
-        notification: "2026-09-24",
-        conference: "2026-12-06",
-        url: "https://neurips.cc/Conferences/2026",
-        type: "ML",
-        notes: "Satellites: Atlanta & Paris, Dec 9–13",
-      },
-      {
-        name: "AAAI 2027",
-        full: "AAAI Conference on Artificial Intelligence",
-        location: "Montréal, Canada",
-        submission: "2026-07-28",
-        notification: "2026-11-30",
-        conference: "2027-02-16",
-        url: "https://aaai.org/conference/aaai/aaai-27/",
-        type: "ML",
-      },
     ];
 
     const badgeClass = {
@@ -385,7 +341,6 @@
 
     function ddayLabel(days) {
       if (days === null) return { text: "Rolling", cls: "dday-ok" };
-      if (days < 0)  return { text: "Closed", cls: "dday-past" };
       if (days === 0) return { text: "Today!", cls: "dday-critical" };
       return { text: `D-${days}`, cls: days <= 7 ? "dday-critical" : days <= 30 ? "dday-warn" : days <= 60 ? "dday-soon" : "dday-ok" };
     }
@@ -394,19 +349,22 @@
 
     function render() {
       const tbody = document.getElementById("conf-tbody");
+      // only deadlines that are still open; rolling journals always qualify
+      const open = conferences.filter(c => {
+        const d = daysUntil(c.submission);
+        return d === null || d >= 0;
+      });
       const filtered = activeFilter === "all"
-        ? conferences
-        : conferences.filter(c => c.type === activeFilter);
+        ? open
+        : open.filter(c => c.type === activeFilter);
 
-      // sort: upcoming first by submission date, closed last, rolling at bottom
+      // sort: soonest deadline first, rolling at bottom
       const sorted = [...filtered].sort((a, b) => {
         const da = daysUntil(a.submission);
         const db = daysUntil(b.submission);
         if (da === null && db === null) return 0;
         if (da === null) return 1;
         if (db === null) return -1;
-        if (da < 0 && db >= 0) return 1;
-        if (db < 0 && da >= 0) return -1;
         return da - db;
       });
 
