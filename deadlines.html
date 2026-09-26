@@ -83,6 +83,22 @@
         white-space: nowrap;
         font-size: 12px;
       }
+      /* a projected date, not one the organisers have published */
+      .est {
+        font-style: italic;
+        color: #999999;
+        border-bottom: 1px dotted #cccccc;
+        cursor: help;
+      }
+      .dday-est {
+        font-style: italic;
+        opacity: 0.65;
+      }
+      .legend {
+        font-size: 11px;
+        color: #888888;
+        margin: 0 0 12px;
+      }
       .note-cell {
         font-size: 11px;
         color: #888;
@@ -140,7 +156,8 @@
 
     <div class="dl-wrap">
       <h2>Conference Deadlines</h2>
-      <p class="subtitle">Open submission deadlines for robotics, ML, CV, and control conferences. Entries drop off the list once their deadline passes. D-day is counted from today. Entries marked <em>estimated</em> are projected from the previous edition until the official CFP is out.</p>
+      <p class="subtitle">Open submission deadlines for robotics, ML, CV, and control conferences. Entries drop off the list once their deadline passes. D-day is counted from today.</p>
+      <p class="legend">Plain dates are published by the organisers. <span class="est">~italic</span> dates are projected from the previous edition because no CFP is out yet &mdash; treat them as rough, and check the linked site before planning around one.</p>
 
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">All</button>
@@ -205,7 +222,8 @@
         conference: "2027-07-11",
         url: "https://icml.cc",
         type: "ML",
-        notes: "Estimated — CFP not released yet",
+        notes: "South America; no 2027 conference page yet",
+        estimated: ["submission", "notification", "conference"],
       },
       {
         name: "RSS 2027",
@@ -225,9 +243,10 @@
         submission: "2027-03-01",
         notification: "2027-06-15",
         conference: "2027-09-26",
-        url: "https://www.iros2027.org",
+        url: "https://2027.ieee-iros.org",
         type: "Robotics",
-        notes: "Mar 1 deadline official; notification date estimated",
+        notes: "Mar 1 deadline confirmed by IEEE-RAS",
+        estimated: ["notification"],
       },
       {
         name: "ICCV 2027",
@@ -238,7 +257,8 @@
         conference: "2027-10-02",
         url: "https://iccv.thecvf.com",
         type: "CV",
-        notes: "Oct 2–8 confirmed; deadline projected from ICCV 2025",
+        notes: "Oct 2–8 confirmed by CVF; CFP not out",
+        estimated: ["submission", "notification"],
       },
       {
         name: "CDC 2027",
@@ -249,7 +269,8 @@
         conference: "2027-12-13",
         url: "https://ieeecss.org/event/66th-ieee-conference-decision-and-control",
         type: "Control",
-        notes: "Dec 13–17 confirmed; deadline projected from CDC 2026 (L-CSS option ~2 weeks earlier)",
+        notes: "Dec 13–17 confirmed; L-CSS option closes ~2 weeks earlier",
+        estimated: ["submission", "notification"],
       },
       {
         name: "NeurIPS 2027",
@@ -260,7 +281,8 @@
         conference: "2027-12-05",
         url: "https://neurips.cc",
         type: "ML",
-        notes: "Estimated — CFP not released yet",
+        notes: "Europe, city TBA; no 2027 conference page yet",
+        estimated: ["submission", "notification", "conference"],
       },
       {
         name: "CoRL 2027",
@@ -271,7 +293,8 @@
         conference: "2027-11-08",
         url: "https://www.corl.org",
         type: "Robotics",
-        notes: "Estimated — CFP not released yet",
+        notes: "No 2027 page yet",
+        estimated: ["submission", "notification", "conference"],
       },
       {
         name: "RA-L",
@@ -330,6 +353,17 @@
       return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
     }
 
+    function isEstimated(conf, field) {
+      return (conf.estimated || []).includes(field);
+    }
+
+    // projected dates are marked so they are never mistaken for published ones
+    function dateCell(conf, field) {
+      const text = formatDate(conf[field]);
+      if (!conf[field] || !isEstimated(conf, field)) return text;
+      return `<span class="est" title="Projected from the previous edition — no official CFP yet">~${text}</span>`;
+    }
+
     function ddayLabel(days) {
       if (days === null) return { text: "Rolling", cls: "dday-ok" };
       if (days === 0) return { text: "Today!", cls: "dday-critical" };
@@ -373,10 +407,10 @@
               ${c.location ? `<div class="conf-full">${c.location}</div>` : ""}
               ${c.notes ? `<div class="note-cell">${c.notes}</div>` : ""}
             </td>
-            <td class="date-cell">${formatDate(c.submission)}</td>
-            <td class="date-cell">${formatDate(c.notification)}</td>
-            <td class="date-cell">${formatDate(c.conference)}</td>
-            <td style="text-align:center"><span class="dday ${cls}">${text}</span></td>
+            <td class="date-cell">${dateCell(c, "submission")}</td>
+            <td class="date-cell">${dateCell(c, "notification")}</td>
+            <td class="date-cell">${dateCell(c, "conference")}</td>
+            <td style="text-align:center"><span class="dday ${cls}${isEstimated(c, "submission") ? " dday-est" : ""}">${text}</span></td>
           </tr>`;
       }).join("");
     }
