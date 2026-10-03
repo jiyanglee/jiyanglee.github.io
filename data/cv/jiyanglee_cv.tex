@@ -3,8 +3,8 @@
 % Packages:
 \usepackage[
     ignoreheadfoot, % set margins without considering header and footer
-    top=2 cm, % seperation between body and page edge from the top
-    bottom=2 cm, % seperation between body and page edge from the bottom
+    top=1.7 cm, % seperation between body and page edge from the top
+    bottom=1.7 cm, % seperation between body and page edge from the bottom
     left=2 cm, % seperation between body and page edge from the left
     right=2 cm, % seperation between body and page edge from the right
     footskip=1.0 cm, % seperation between body and footer
@@ -134,7 +134,7 @@
         \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
         \LenToUnit{\paperheight-1.0 cm}
     ){\vtop{{\null}\makebox[0pt][c]{
-        \small\color{gray}\textit{Last updated in January 2026}\hspace{\widthof{Last updated in January 2026}}
+        \small\color{gray}\textit{Last updated in October 2026}\hspace{\widthof{Last updated in October 2026}}
     }}}%
   }%
 }%
@@ -157,28 +157,57 @@
     \normalsize
     \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Gwanak-gu, Seoul, South Korea} \kern 0.25 cm \AND \kern 0.25 cm
     \mbox{\hrefWithoutArrow{mailto:jiyang.lee@snu.ac.kr}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}jiyang.lee@snu.ac.kr}} \kern 0.25 cm \AND \kern 0.25 cm
-    % \mbox{\hrefWithoutArrow{https://jiyang91.github.io}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}jiyang91.github.io}}
+    \mbox{\hrefWithoutArrow{https://jiyanglee.github.io}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}jiyanglee.github.io}}
 \end{header}
 
 \vspace{0.3 cm - 0.3 cm}
 
-\section{Research Interest}
+\section{Research Interests}
 \begin{onecolentry}
-Robotic Learning, Embodied AI, Vision-Language-Action Models
+Robot Learning, Embodied AI, Vision-Language-Action Models, World-Action Models
+\end{onecolentry}
+
+\section{Research Experience}
+\begin{twocolentry}{\textit{Jan 2026 -- Present}}
+\textbf{University of Waterloo / Seoul National University}\\
+Generative Robot Policies on Real Robots
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Fine-tuned and evaluated $\pi_{0.5}$ (full and LoRA), Diffusion Policy, and OpenVLA in LIBERO and on a Kinova Gen3 robot.
+    \item Built an end-to-end real-robot learning pipeline for demonstration collection, policy training, and closed-loop deployment.
+    \item Conducted controlled studies of generative policies in multi-object manipulation settings.
+    \item Implemented inference-time policy guidance using learned visual dynamics.
+\end{highlights}
+\end{onecolentry}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{\textit{Sep 2026 -- Present}}
+\textbf{Seoul National University}\\
+Humanoid Data Generation and Whole-Body Tracking
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+    \item Processed G1-retargeted motion data from OMOMO and BONES-SEED, selected and annotated eight indoor 3D Gaussian Splatting scenes, and built an egocentric rendering environment in Isaac Sim.
+    \item Checked retargeted motions in MuJoCo using a public whole-body tracking controller.
+    \item Designed a lower-body intervention diagnostic set (27 states $\times$ 8 seeds) for later execution analysis.
+\end{highlights}
 \end{onecolentry}
 
 \section{Education}
 \begin{twocolentry}{\textit{Mar 2024 -- Present}}
 \textbf{Seoul National University}, Seoul, Korea\\
-Ph.D Student in Civil \& Environment Engineering\\
-Advisor: Prof. Seong-Woo Kim
+Ph.D. Candidate in Civil, Urban and Environmental Engineering\\
+Advisor: Prof. Seong-Woo Kim\\
+Expected graduation: August 2028
 \end{twocolentry}
 
 \vspace{0.2 cm}
 
 \begin{twocolentry}{\textit{Jan 2026 -- Jul 2026}}
 \textbf{University of Waterloo}, Waterloo, Canada\\
-International Visiting Graduate Student\\
+International Visiting Graduate Student, Electrical and Computer Engineering\\
 Advisor: Prof. Roya Firoozi
 \end{twocolentry}
 
@@ -191,13 +220,6 @@ Master of Science in Mechanical Engineering\\
 Advisor: Prof. Cheol-soo Lee\\
 Graduate Research Assistant, CAD/CAM Lab (03/2015--02/2017)
 \end{twocolentry}
-\begin{onecolentry}
-\begin{highlights}
-    \item Analyzed PET dispensing system and built a robotic dispensing system.
-    \item Designed multi-axis manipulators and customized a SCARA robot.
-    \item Published two journals and attended three conferences.
-\end{highlights}
-\end{onecolentry}
 
 \vspace{0.2 cm}
 
@@ -206,13 +228,6 @@ Graduate Research Assistant, CAD/CAM Lab (03/2015--02/2017)
 Bachelor of Science in Mechanical Engineering\\
 Undergraduate Research Assistant, CAD/CAM Lab (12/2013--02/2015)
 \end{twocolentry}
-\begin{onecolentry}
-\begin{highlights}
-    \item Researched Six-Axis Robot Manipulator mechanisms.
-    \item Awarded Academic Excellence Scholarships.
-    \item Admitted with highest distinction on College Entrance Exam.
-\end{highlights}
-\end{onecolentry}
 
 \section{Professional Experience}
 \begin{twocolentry}{\textit{Dec 2020 -- Feb 2024}}
@@ -221,8 +236,8 @@ Research Engineer, Vision Algorithm Team
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item Developed Few-Shot Learning Classification Model for OLED defect images.
-    \item Built AI-based Anomaly Detection Automatic Alarm System.
+    \item Developed a few-shot classification model for OLED defect images.
+    \item Built an AI-based automatic anomaly detection and alarm system.
     \item Accelerated legacy rule-based anomaly system with CUDA, improving speed by 7 times.
 \end{highlights}
 \end{onecolentry}
@@ -236,22 +251,21 @@ Robotics Researcher
 \begin{onecolentry}
 \begin{highlights}
     \item Designed and assembled a quadruped robot.
-    \item Developed panoramic view system for Firefighting Armored Robot.
+    \item Developed a panoramic-view system for a firefighting armored robot.
     \item Conducted UWB-based robot swarm localization experiments.
 \end{highlights}
 \end{onecolentry}
 
 \vspace{0.2 cm}
 
+\needspace{4\baselineskip}
 \begin{twocolentry}{\textit{Jan 2017 -- Sep 2018}}
 \textbf{CSCAM Co., Ltd.}, Gwangju, Korea\\
 CNC Department
 \end{twocolentry}
 \begin{onecolentry}
 \begin{highlights}
-    \item Devised Smartphone Frame Vision Inspection machine.
-    \item Built XRF Inspection Machine for Samsung Electro-Mechanics.
-    \item Designed loading and buffer machines for OLED manufacturing lines.
+    \item Built vision and XRF inspection machines and OLED line loading equipment.
 \end{highlights}
 \end{onecolentry}
 
@@ -277,17 +291,6 @@ CNC Department
     \item Chan Kim, Keonwoo Kim, Mintaek Oh, Hanbi Baek, \textbf{Jiyang Lee}, et al., "E2Map: Experience-and-Emotion Map for Self-Reflective Robot Navigation with Language Models," IEEE ICRA, Atlanta, USA, May 2025.
     \item Kim, M., \textbf{Lee, J.Y.}, et al., "A Robust Position Estimation Algorithm under Unusual Large Range Errors," IEEE ROMAN, New Delhi, India, 2019.
     \item \textbf{Lee, J.Y.} and Lee, C.S., "Path planning for SCARA robot based on marker detection using feature extraction, labeling, and inverse perspective transform" 26th International Conference on Flexible Automation and Intelligent Manufacturing, Seoul, 2016.
-    \item Lee, C.S., \textbf{Lee, J.Y.}, et al., "Teleoperation of SCARA Robot for Radiopharmaceutical Product Dispensing," Korean Society of Manufacturing Technology Engineers, Fall Conference, 2016.
-    \item \textbf{Lee, J.Y.} and Lee, C.S., "SCARA Robot 2D Path Planning using Markers," Winter Conference of Society for Computational Design and Engineering, 2016.
-\end{highlights}
-\end{onecolentry}
-
-\section{Research Experience}
-\begin{onecolentry}
-\begin{highlights}
-    \item Graduate Teaching Assistant, MEE6413: Intelligent Actuator (Aug. 2017 -- Dec. 2017)
-    \item Graduate Teaching Assistant, MEE4004: 3D CAD \& Practice (Mar. 2015 -- Feb. 2017)
-    \item Grader, MEE2026: 2D-CAD (Mar. 2015 -- Feb. 2017)
 \end{highlights}
 \end{onecolentry}
 
@@ -295,15 +298,14 @@ CNC Department
 \begin{onecolentry}
 \begin{highlights}
     \item Best Paper Award, Korean Society of Manufacturing Technology Engineers, 2017
-    \item Robot Membership Award, Samsung Techwin, 2014
-    \item Excellence Award, TI Innovation Challenge: Korean MCU Design Contest, 2013
 \end{highlights}
 \end{onecolentry}
 
 \section{Additional Information}
 \begin{onecolentry}
 \begin{highlights}
-    \item \textbf{Programming Skills}: C++, Python, OpenCV, PyTorch, CUDA
+    \item \textbf{Robot Learning}: $\pi_{0.5}$ (openpi), Diffusion Policy, OpenVLA, LIBERO, MimicGen, Isaac Sim, MuJoCo
+    \item \textbf{Programming / ML}: Python, C++, PyTorch, OpenCV, CUDA
     \item \textbf{Mechanical Design}: Autodesk AutoCAD, Inventor, SolidWorks
 \end{highlights}
 \end{onecolentry}
