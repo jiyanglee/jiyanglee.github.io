@@ -194,44 +194,22 @@
     </div>
 
     <script>
-    // Deadlines verified on 2026-10-26. Entries marked "estimated" are projected
+    // Deadlines verified on 2026-11-23. Entries marked "estimated" are projected
     // from the previous edition's calendar and should be re-checked once the CFP is out.
-    const DATA_VERIFIED = "2026-10-26";
+    const DATA_VERIFIED = "2026-11-23";
 
     const conferences = [
-      {
-        name: "ACC 2027",
-        full: "American Control Conference",
-        location: "Philadelphia, PA, USA",
-        submission: "2026-10-02",
-        notification: "2027-01-22",
-        conference: "2027-07-07",
-        url: "https://acc2027.a2c2.org",
-        type: "Control",
-        notes: "Firm deadline — extended from Sep 25, 2026",
-      },
-      {
-        name: "CVPR 2027",
-        full: "IEEE/CVF Conf. on Computer Vision and Pattern Recognition",
-        location: "Seattle, WA, USA",
-        submission: "2026-11-16",
-        notification: "2027-02-25",
-        conference: "2027-06-22",
-        url: "https://cvpr.thecvf.com/Conferences/2027/Dates",
-        type: "CV",
-        notes: "Paper registration due Nov 10; supplementary Nov 23 (AoE); workshops from Jun 20",
-      },
       {
         name: "ICML 2027",
         full: "Intl. Conference on Machine Learning",
         location: "Rio de Janeiro, Brazil",
-        submission: "2027-01-28",
+        submission: "2027-01-22",
         notification: "2027-04-30",
         conference: "2027-08-02",
         url: "https://icml.cc",
         type: "ML",
-        notes: "Riocentro; Jul 31 expo, Aug 1 tutorials, Aug 2–4 main conference, Aug 5–6 workshops; CFP not out",
-        estimated: ["submission", "notification"],
+        notes: "Riocentro; Jul 31 expo, Aug 1 tutorials, Aug 2–4 main conference, Aug 5–6 workshops; abstract due Jan 14; notification date not yet published",
+        estimated: ["notification"],
       },
       {
         name: "RSS 2027",
@@ -262,11 +240,11 @@
         location: "Hong Kong Convention and Expo Centre",
         submission: "2027-03-05",
         notification: "2027-06-25",
-        conference: "2027-10-03",
+        conference: "2027-10-06",
         url: "https://iccv.thecvf.com/Conferences/2027/Dates",
         type: "CV",
-        notes: "Oct 3–7 per CVF dates page (workshops Oct 3–4, main conference Oct 5–7); CFP not out",
-        estimated: ["submission", "notification"],
+        notes: "CVF now lists the window as Oct 2–8, 2027; workshop/main split and CFP not yet published — main conference start estimated from the last 3 days of the window",
+        estimated: ["submission", "notification", "conference"],
       },
       {
         name: "CDC 2027",
